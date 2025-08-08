@@ -1,7 +1,11 @@
 import { useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [liked, setLiked] = useState(false);
+
+  const handleClick = () => {
+    setLiked(!liked);
+  };
 
   return (
     <div style={{
@@ -9,28 +13,20 @@ function App() {
       textAlign: "center",
       marginTop: "50px",
     }}>
-      <h1>Counter App</h1>
-      <p style={{ fontSize: "2rem" }}>{count}</p>
+      <h1>Like Button</h1>
       <button
-        onClick={() => setCount(count + 1)}
+        onClick={handleClick}
         style={{
           padding: "10px 20px",
-          fontSize: "1rem",
-          marginRight: "10px",
+          fontSize: "1.2rem",
           cursor: "pointer",
+          backgroundColor: liked ? "red" : "gray",
+          color: "white",
+          border: "none",
+          borderRadius: "5px",
         }}
       >
-        Increase
-      </button>
-      <button
-        onClick={() => setCount(count - 1)}
-        style={{
-          padding: "10px 20px",
-          fontSize: "1rem",
-          cursor: "pointer",
-        }}
-      >
-        Decrease
+        {liked ? "Liked ❤️" : "Like ♡"}
       </button>
     </div>
   );
