@@ -1,23 +1,37 @@
-import ProfileCard from "./ProfileCard";
+import { useState } from "react";
 
 function App() {
+  const [count, setCount] = useState(0);
+
   return (
     <div style={{
-      display: "flex",
-      gap: "20px",
-      justifyContent: "center",
-      marginTop: "50px"
+      fontFamily: "sans-serif",
+      textAlign: "center",
+      marginTop: "50px",
     }}>
-      <ProfileCard
-        name="Mohammed Mubeen"
-        image="https://randomuser.me/api/portraits/men/32.jpg"
-        bio="React developer in the making 🚀"
-      />
-      <ProfileCard
-        name="Jane Doe"
-        image="https://randomuser.me/api/portraits/women/44.jpg"
-        bio="UI/UX designer & coffee lover ☕"
-      />
+      <h1>Counter App</h1>
+      <p style={{ fontSize: "2rem" }}>{count}</p>
+      <button
+        onClick={() => setCount(count + 1)}
+        style={{
+          padding: "10px 20px",
+          fontSize: "1rem",
+          marginRight: "10px",
+          cursor: "pointer",
+        }}
+      >
+        Increase
+      </button>
+      <button
+        onClick={() => setCount(count - 1)}
+        style={{
+          padding: "10px 20px",
+          fontSize: "1rem",
+          cursor: "pointer",
+        }}
+      >
+        Decrease
+      </button>
     </div>
   );
 }
