@@ -1,29 +1,33 @@
 import { useState } from "react";
 
 function App() {
-  const [todos, setTodos] = useState([
-    { id: 1, text: "React seekhna" },
-    { id: 2, text: "Project banana" },
-    { id: 3, text: "Git push karna" },
-  ]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleToggle = () => {
+    setIsLoggedIn(!isLoggedIn);
+  };
 
   return (
     <div style={{
       fontFamily: "sans-serif",
-      maxWidth: "400px",
-      margin: "50px auto",
-      padding: "20px",
-      border: "1px solid #ddd",
-      borderRadius: "8px"
+      textAlign: "center",
+      marginTop: "50px"
     }}>
-      <h1>Todo List</h1>
-      <ul>
-        {todos.map(todo => (
-          <li key={todo.id} style={{ padding: "8px 0", borderBottom: "1px solid #eee" }}>
-            {todo.text}
-          </li>
-        ))}
-      </ul>
+      <h1>{isLoggedIn ? "Welcome Back, User!" : "Please Login"}</h1>
+      <button
+        onClick={handleToggle}
+        style={{
+          padding: "10px 20px",
+          fontSize: "1rem",
+          cursor: "pointer",
+          borderRadius: "5px",
+          border: "none",
+          backgroundColor: isLoggedIn ? "#4caf50" : "#f44336",
+          color: "white"
+        }}
+      >
+        {isLoggedIn ? "Logout" : "Login"}
+      </button>
     </div>
   );
 }
